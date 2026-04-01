@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+🎨 AI CRM Frontend (React + Redux)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+📌 Overview
 
-## Available Scripts
+This is the frontend for the AI-powered CRM system.
+It provides a clean UI where users can log, edit, and manage healthcare interactions using natural language via an AI assistant.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ✅ Chat-based AI interaction input
+- ✅ Auto-fill form using AI
+- ✅ Manual form editing support
+- ✅ Submit interaction to backend
+- ✅ View all saved interactions
+- ✅ Redux state management
+- ✅ Clean responsive UI
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Frontend: React
+- State Management: Redux Toolkit
+- Routing: React Router
+- HTTP Client: Axios
+- Styling: Inline CSS
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+⚙️ Setup Instructions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1️⃣ Clone repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone <your-repo-link>
+cd ai-crm-frontend
 
-### `npm run eject`
+2️⃣ Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3️⃣ Start frontend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+👉 App runs at:
 
-## Learn More
+http://localhost:3000
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🔗 Backend Connection
 
-### Code Splitting
+Make sure backend is running at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+http://127.0.0.1:8000
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+🧠 Key Components
 
-### Making a Progressive Web App
+🔹 Chat Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Sends user input to backend AI
+- Receives structured data
+- Updates Redux store
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+🔹 Form Component
 
-### Deployment
+- Displays interaction data
+- Supports manual editing
+- Submit + Clear functionality
+- Navigate to all interactions page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+🔹 AllInteractions Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Fetches all saved interactions
+- Displays in card/grid layout
+- Includes ID, details, and navigation
+
+---
+
+🔄 Application Flow
+
+1. User types message in chat
+2. AI processes via backend
+3. Redux updates form data
+4. User edits (optional)
+5. Submit → data saved in DB
+6. View all interactions
+
+---
+
+🧪 Example Usage
+
+🔹 Input (Chat)
+
+Met Dr Sharma yesterday, discussed diabetes drug, he was interested
+
+🔹 Result
+
+- Form auto-filled
+- User can edit manually
+- Click Submit → saved with ID
+
+---
+
+📁 Folder Structure
+
+src/
+ ├── components/
+ │    ├── Chat.js
+ │    ├── Form.js
+ │    ├── AllInteractions.js
+ │
+ ├── redux/
+ │    └── interactionSlice.js
+ │
+ ├── App.js
+ └── index.js
+
+---
+
+📌 Notes
+
+- Backend must be running for AI features
+- Redux handles shared state between Chat & Form
+- React Router handles navigation
+
+---
+
+⭐ Future Improvements
+
+- Add UI framework (Material UI / Tailwind)
+- Add loading indicators
+- Add validation & error handling
+- Improve UI responsiveness
+- Add authentication
+
+---
