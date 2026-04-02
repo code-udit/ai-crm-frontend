@@ -27,6 +27,7 @@ function Chat() {
     if (!message) return;
 
     try {
+
       const url = `${API_URL}/ai/agent`;
 
       const res = await axios.post(url, {
@@ -52,9 +53,8 @@ function Chat() {
   return (
     <div
       style={{
-        padding: "15px",
-        height: "100%",
-        minHeight: "100vh",
+        padding: "20px",
+        height: "100vh",
         background: "#f4f6f9",
         display: "flex",
         flexDirection: "column",
@@ -63,11 +63,12 @@ function Chat() {
       }}
     >
       {/* TOP SECTION */}
-      <div style={{ overflowY: "auto" }}>
+      <div>
         <h2 style={{ marginBottom: "15px", fontWeight: "600" }}>
           🤖 AI Assistant
         </h2>
 
+        {/* SAMPLE BUTTON */}
         <button
           onClick={() => setShowSamples(!showSamples)}
           style={{
@@ -80,21 +81,21 @@ function Chat() {
             cursor: "pointer",
             fontSize: "13px",
             fontWeight: "500",
-            width: "100%",
           }}
         >
           Sample Chats ▾
         </button>
 
+        {/* DROPDOWN */}
         {showSamples && (
           <div
             style={{
               background: "#ffffff",
-              padding: "10px",
+              padding: "12px",
               borderRadius: "10px",
               border: "1px solid #e0e0e0",
               marginBottom: "12px",
-              maxHeight: "180px",
+              maxHeight: "220px",
               overflowY: "auto",
               boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
             }}
@@ -104,20 +105,20 @@ function Chat() {
                 key={index}
                 style={{
                   display: "flex",
-                  flexDirection: "column", // ✅ mobile fix
-                  gap: "6px",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                   padding: "8px",
                   borderRadius: "6px",
                   marginBottom: "6px",
                   background: "#f8f9fa",
                 }}
               >
-                <span style={{ fontSize: "13px" }}>{chat}</span>
+                <span style={{ flex: 1, fontSize: "13px" }}>{chat}</span>
 
                 <button
                   onClick={() => handleCopy(chat)}
                   style={{
-                    alignSelf: "flex-end",
+                    marginLeft: "10px",
                     padding: "5px 8px",
                     fontSize: "12px",
                     cursor: "pointer",
@@ -126,13 +127,14 @@ function Chat() {
                     background: "#dee2e6",
                   }}
                 >
-                  📋 Copy
+                  📋
                 </button>
               </div>
             ))}
           </div>
         )}
 
+        {/* INFO BOX */}
         <div
           style={{
             background: "#ffffff",
@@ -158,7 +160,7 @@ function Chat() {
           onChange={(e) => setMessage(e.target.value)}
           style={{
             width: "100%",
-            height: "80px",
+            height: "90px",
             padding: "12px",
             borderRadius: "10px",
             border: "1px solid #ccc",
@@ -171,7 +173,7 @@ function Chat() {
           onClick={handleSend}
           style={{
             width: "100%",
-            marginTop: "10px",
+            marginTop: "12px",
             padding: "12px",
             background: "linear-gradient(90deg, #007bff, #0056b3)",
             color: "white",
