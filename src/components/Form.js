@@ -28,21 +28,17 @@ function Form() {
     fontSize: "14px",
   };
 
-  // ✅ HANDLE INPUT CHANGE
   const handleChange = (field, value) => {
     dispatch(setInteraction({ ...data, [field]: value }));
   };
 
-  // ✅ SUBMIT
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
     console.log("SUBMIT CALLED");
 
     try {
       const res = await axios.post(`${API_URL}/interactions`, data);
-
       toast.success("Saved successfully! ID: " + res.data.id);
-
       dispatch(setInteraction({}));
     } catch (err) {
       console.error(err);
@@ -50,7 +46,6 @@ function Form() {
     }
   };
 
-  // ✅ CLEAR
   const handleClear = () => {
     dispatch(setInteraction({}));
   };
@@ -58,24 +53,24 @@ function Form() {
   return (
     <div
       style={{
-        padding: "30px",
+        padding: "20px",
         background: "#f4f6f9",
         minHeight: "100vh",
         fontFamily: "Segoe UI, Arial",
       }}
     >
-      {/* HEADER */}
       <h2 style={{ marginBottom: "20px", fontWeight: "600" }}>
         📋 Log HCP Interaction
       </h2>
 
-      {/* FORM CARD */}
       <div
         style={{
           background: "#ffffff",
-          padding: "25px",
+          padding: "20px",
           borderRadius: "12px",
           boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+          maxWidth: "600px",
+          margin: "auto",
         }}
       >
         <label style={labelStyle}>HCP Name</label>
@@ -128,7 +123,6 @@ function Form() {
           onChange={(e) => handleChange("follow_up_actions", e.target.value)}
         />
 
-        {/* AI Suggestions */}
         {data.follow_up_suggestions && (
           <div
             style={{
@@ -155,16 +149,16 @@ function Form() {
         <div
           style={{
             display: "flex",
+            flexWrap: "wrap",
             gap: "12px",
             marginTop: "20px",
           }}
         >
-          {/* SUBMIT */}
           <button
             type="button"
             onClick={handleSubmit}
             style={{
-              flex: 1,
+              flex: "1 1 100%",
               padding: "12px",
               background: "linear-gradient(90deg, #007bff, #0056b3)",
               color: "#fff",
@@ -177,11 +171,10 @@ function Form() {
             🚀 Submit
           </button>
 
-          {/* CLEAR */}
           <button
             onClick={handleClear}
             style={{
-              flex: 1,
+              flex: "1 1 48%",
               padding: "12px",
               background: "#dc3545",
               color: "#fff",
@@ -194,11 +187,10 @@ function Form() {
             🧹 Clear
           </button>
 
-          {/* VIEW ALL */}
           <button
             onClick={() => navigate("/interactions")}
             style={{
-              flex: 1,
+              flex: "1 1 48%",
               padding: "12px",
               background: "#198754",
               color: "#fff",
