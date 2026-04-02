@@ -5,19 +5,21 @@ import { useNavigate } from "react-router-dom";
 function AllInteractions() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const API_URL = process.env.REACT_APP_API_URL;
+  console.log("API_URL:", API_URL);
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/interactions");
+      const res = await axios.get(`${API_URL}/interactions`);
       setData(res.data);
     } catch (err) {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div

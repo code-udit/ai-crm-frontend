@@ -9,6 +9,7 @@ function Form() {
   const data = useSelector((state) => state.interaction.data) || {};
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const inputStyle = {
     width: "100%",
@@ -33,10 +34,16 @@ function Form() {
   };
 
   // ✅ SUBMIT
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    if (e) e.preventDefault();
+    console.log("SUBMIT CALLED");
+
     try {
-      const res = await axios.post("http://127.0.0.1:8000/interactions", data);
+      const res = await axios.post(`${API_URL}/interactions`, data);
+
       toast.success("Saved successfully! ID: " + res.data.id);
+
+      dispatch(setInteraction({}));
     } catch (err) {
       console.error(err);
       toast.error("Save failed");
@@ -154,6 +161,7 @@ function Form() {
         >
           {/* SUBMIT */}
           <button
+            type="button"
             onClick={handleSubmit}
             style={{
               flex: 1,

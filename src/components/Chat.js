@@ -8,6 +8,7 @@ function Chat() {
   const [showSamples, setShowSamples] = useState(false);
   const dispatch = useDispatch();
   const data = useSelector((state) => state.interaction.data) || {};
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const sampleChats = [
     "Met Dr Sharma yesterday, discussed diabetes drug, he was interested",
@@ -26,11 +27,8 @@ function Chat() {
     if (!message) return;
 
     try {
-      const isEmpty = !data || Object.keys(data).length === 0;
 
-      const url = isEmpty
-        ? "http://127.0.0.1:8000/ai/log"
-        : "http://127.0.0.1:8000/ai/agent";
+      const url = `${API_URL}/ai/agent`;
 
       const res = await axios.post(url, {
         message: message,
