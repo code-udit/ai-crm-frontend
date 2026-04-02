@@ -52,34 +52,39 @@ function Chat() {
   return (
     <div
       style={{
-        padding: "15px",
-        height: "100%",
-        minHeight: "100vh",
+        padding: "12px",
         background: "#f4f6f9",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
         borderLeft: "1px solid #ddd",
+
+        // ✅ FIX HERE
+        maxHeight: "500px",   // 👈 limit height (important)
+        overflow: "hidden",
       }}
     >
       {/* TOP SECTION */}
-      <div style={{ overflowY: "auto" }}>
-        <h2 style={{ marginBottom: "15px", fontWeight: "600" }}>
+      <div
+        style={{
+          overflowY: "auto",
+          flex: 1,
+        }}
+      >
+        <h2 style={{ marginBottom: "10px", fontWeight: "600", fontSize: "18px" }}>
           🤖 AI Assistant
         </h2>
 
         <button
           onClick={() => setShowSamples(!showSamples)}
           style={{
-            padding: "8px 14px",
-            marginBottom: "12px",
+            padding: "8px 12px",
+            marginBottom: "10px",
             background: "#343a40",
             color: "#fff",
             border: "none",
             borderRadius: "8px",
             cursor: "pointer",
             fontSize: "13px",
-            fontWeight: "500",
             width: "100%",
           }}
         >
@@ -93,10 +98,9 @@ function Chat() {
               padding: "10px",
               borderRadius: "10px",
               border: "1px solid #e0e0e0",
-              marginBottom: "12px",
-              maxHeight: "180px",
+              marginBottom: "10px",
+              maxHeight: "150px",
               overflowY: "auto",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
             }}
           >
             {sampleChats.map((chat, index) => (
@@ -104,7 +108,7 @@ function Chat() {
                 key={index}
                 style={{
                   display: "flex",
-                  flexDirection: "column", // ✅ mobile fix
+                  flexDirection: "column",
                   gap: "6px",
                   padding: "8px",
                   borderRadius: "6px",
@@ -120,7 +124,6 @@ function Chat() {
                     alignSelf: "flex-end",
                     padding: "5px 8px",
                     fontSize: "12px",
-                    cursor: "pointer",
                     borderRadius: "6px",
                     border: "none",
                     background: "#dee2e6",
@@ -136,34 +139,36 @@ function Chat() {
         <div
           style={{
             background: "#ffffff",
-            padding: "12px",
+            padding: "10px",
             borderRadius: "10px",
             fontSize: "13px",
-            marginBottom: "10px",
+            marginBottom: "8px",
             border: "1px solid #e0e0e0",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
           }}
         >
           <b>Log interaction via chat</b>
           <br />
-          Example: "Met Dr Sharma, discussed diabetes drug, positive response"
+          Example: "Met Dr Sharma, discussed diabetes drug"
         </div>
       </div>
 
       {/* INPUT SECTION */}
-      <div>
+      <div
+        style={{
+          marginTop: "8px",
+        }}
+      >
         <textarea
           placeholder="Type your interaction..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           style={{
             width: "100%",
-            height: "80px",
-            padding: "12px",
+            height: "70px",   // 👈 smaller
+            padding: "10px",
             borderRadius: "10px",
             border: "1px solid #ccc",
             fontSize: "14px",
-            outline: "none",
           }}
         />
 
@@ -171,15 +176,14 @@ function Chat() {
           onClick={handleSend}
           style={{
             width: "100%",
-            marginTop: "10px",
-            padding: "12px",
+            marginTop: "8px",
+            padding: "10px",
             background: "linear-gradient(90deg, #007bff, #0056b3)",
             color: "white",
             border: "none",
             borderRadius: "10px",
             fontWeight: "600",
-            cursor: "pointer",
-            fontSize: "15px",
+            fontSize: "14px",
           }}
         >
           🚀 Log Interaction
