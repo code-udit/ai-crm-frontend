@@ -8,18 +8,17 @@ function AllInteractions() {
   const API_URL = process.env.REACT_APP_API_URL;
   console.log("API_URL:", API_URL);
 
-  const fetchData = async () => {
-    try {
-      const res = await axios.get(`${API_URL}/interactions`);
-      setData(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`${API_URL}/interactions`);
+        setData(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     fetchData();
-  }, []);
+  }, [API_URL]);
 
   return (
     <div
@@ -71,23 +70,34 @@ function AllInteractions() {
             </div>
 
             {/* DETAILS */}
-            <p><b>ID:</b> {item.id}</p>
-            <p><b>Type:</b> {item.interaction_type}</p>
-            <p><b>Date:</b> {item.date}</p>
-            <p><b>Sentiment:</b> {item.sentiment}</p>
+            <p>
+              <b>ID:</b> {item.id}
+            </p>
+            <p>
+              <b>Type:</b> {item.interaction_type}
+            </p>
+            <p>
+              <b>Date:</b> {item.date}
+            </p>
+            <p>
+              <b>Sentiment:</b> {item.sentiment}
+            </p>
 
             <p>
-              <b>Topics:</b><br />
+              <b>Topics:</b>
+              <br />
               {item.topics_discussed}
             </p>
 
             <p>
-              <b>Outcomes:</b><br />
+              <b>Outcomes:</b>
+              <br />
               {item.outcomes}
             </p>
 
             <p>
-              <b>Follow-up:</b><br />
+              <b>Follow-up:</b>
+              <br />
               {item.follow_up_actions}
             </p>
           </div>
