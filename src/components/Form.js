@@ -59,9 +59,22 @@ function Form() {
         fontFamily: "Segoe UI, Arial",
       }}
     >
-      <h2 style={{ marginBottom: "20px", fontWeight: "600" }}>
+      <h2 style={{ marginBottom: "6px", fontWeight: "600" }}>
         📋 Log HCP Interaction
       </h2>
+
+      <p
+        style={{
+          marginBottom: "20px",
+          color: "#6c757d",
+          fontSize: "14px",
+          maxWidth: "600px",
+          lineHeight: "1.5",
+        }}
+      >
+        A system that uses AI to convert natural language into structured
+        healthcare interaction data for efficient tracking and management.
+      </p>
 
       <div
         style={{
