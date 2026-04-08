@@ -25,7 +25,7 @@ function Header() {
     >
       <div>AI CRM</div>
       <div style={{ fontSize: "13px", opacity: 0.8 }}>
-        UDIT U GUNAGI
+        Devloped BY Udit U Gunagi
       </div>
     </div>
   );
