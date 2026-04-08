@@ -24,28 +24,32 @@ function AllInteractions() {
     <div
       style={{
         padding: "30px",
-        background: "#eef1f5",
         minHeight: "100vh",
         fontFamily: "Segoe UI, Arial",
+        background: "linear-gradient(135deg, #0f172a, #1e293b)", // ✅ dark theme
+        color: "#fff",
       }}
     >
-      {/* ✅ BACK BUTTON */}
+      {/* BACK BUTTON */}
       <button
         onClick={() => navigate("/")}
         style={{
-          marginBottom: "15px",
-          padding: "8px 16px",
-          background: "#0d6efd",
+          marginBottom: "20px",
+          padding: "10px 18px",
+          background: "linear-gradient(90deg, #6366f1, #4f46e5)", // ✅ premium button
           color: "#fff",
           border: "none",
-          borderRadius: "6px",
+          borderRadius: "8px",
           cursor: "pointer",
+          fontWeight: "500",
         }}
       >
         ← Back
       </button>
 
-      <h2 style={{ marginBottom: "20px" }}>All Interactions</h2>
+      <h2 style={{ marginBottom: "20px", fontWeight: "600" }}>
+        All Interactions
+      </h2>
 
       <div
         style={{
@@ -58,30 +62,26 @@ function AllInteractions() {
           <div
             key={item.id}
             style={{
-              background: "#fff",
+              background: "rgba(255,255,255,0.08)", // ✅ glass effect
               padding: "20px",
-              borderRadius: "10px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+              borderRadius: "14px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              backdropFilter: "blur(10px)",
+              boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
             }}
           >
             {/* HEADER */}
             <div style={{ marginBottom: "10px" }}>
-              <h3 style={{ margin: 0 }}>{item.hcp_name}</h3>
+              <h3 style={{ margin: 0, color: "#fff" }}>
+                {item.hcp_name}
+              </h3>
             </div>
 
             {/* DETAILS */}
-            <p>
-              <b>ID:</b> {item.id}
-            </p>
-            <p>
-              <b>Type:</b> {item.interaction_type}
-            </p>
-            <p>
-              <b>Date:</b> {item.date}
-            </p>
-            <p>
-              <b>Sentiment:</b> {item.sentiment}
-            </p>
+            <p><b>ID:</b> {item.id}</p>
+            <p><b>Type:</b> {item.interaction_type}</p>
+            <p><b>Date:</b> {item.date}</p>
+            <p><b>Sentiment:</b> {item.sentiment}</p>
 
             <p>
               <b>Topics:</b>

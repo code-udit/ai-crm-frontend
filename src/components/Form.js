@@ -12,15 +12,16 @@ function Form() {
   const API_URL = process.env.REACT_APP_API_URL;
 
   const inputStyle = {
-    width: "100%",
-    padding: "12px",
-    marginBottom: "14px",
-    borderRadius: "10px",
-    border: "1px solid #ccc",
-    fontSize: "14px",
-    outline: "none",
-    boxSizing: "border-box"
-  };
+  width: "100%",
+  padding: "12px",
+  marginBottom: "14px",
+  borderRadius: "10px",
+  border: "1px solid #ddd",
+  fontSize: "14px",
+  outline: "none",
+  boxSizing: "border-box",
+  background: "#f9fafb",
+};
 
   const labelStyle = {
     fontWeight: "600",
@@ -51,13 +52,14 @@ function Form() {
     dispatch(setInteraction({}));
   };
 
+  // ONLY UI changed — LOGIC SAME
+
   return (
     <div
       style={{
-        padding: "20px",
-        background: "#f4f6f9",
-        minHeight: "100vh",
-        fontFamily: "Segoe UI, Arial",
+        width: "100%",
+        maxWidth: "600px",
+        color: "#fff",
       }}
     >
       <h2 style={{ marginBottom: "6px", fontWeight: "600" }}>
@@ -67,9 +69,8 @@ function Form() {
       <p
         style={{
           marginBottom: "20px",
-          color: "#6c757d",
+          color: "#cbd5f5",
           fontSize: "14px",
-          maxWidth: "600px",
           lineHeight: "1.5",
         }}
       >
@@ -79,12 +80,11 @@ function Form() {
 
       <div
         style={{
-          background: "#ffffff",
-          padding: "20px",
-          borderRadius: "12px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
-          maxWidth: "600px",
-          margin: "auto",
+          background: "rgba(255,255,255,0.95)",
+          padding: "25px",
+          borderRadius: "16px",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+          color: "#000",
         }}
       >
         <label style={labelStyle}>HCP Name</label>
@@ -174,7 +174,7 @@ function Form() {
             style={{
               flex: "1 1 100%",
               padding: "12px",
-              background: "linear-gradient(90deg, #007bff, #0056b3)",
+              background: "linear-gradient(90deg, #6366f1, #4f46e5)",
               color: "#fff",
               border: "none",
               borderRadius: "10px",
@@ -190,7 +190,7 @@ function Form() {
             style={{
               flex: "1 1 48%",
               padding: "12px",
-              background: "#dc3545",
+              background: "#ef4444",
               color: "#fff",
               border: "none",
               borderRadius: "10px",
@@ -206,7 +206,7 @@ function Form() {
             style={{
               flex: "1 1 48%",
               padding: "12px",
-              background: "#198754",
+              background: "#22c55e",
               color: "#fff",
               border: "none",
               borderRadius: "10px",

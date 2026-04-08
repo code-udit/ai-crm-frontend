@@ -27,7 +27,6 @@ function Chat() {
     if (!message) return;
 
     try {
-
       const url = `${API_URL}/ai/agent`;
 
       const res = await axios.post(url, {
@@ -54,16 +53,15 @@ function Chat() {
     <div
       style={{
         padding: "20px",
-        height: "100vh",
-        background: "#f4f6f9",
+        flex: 1,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
-        borderLeft: "1px solid #ddd",
+        gap: "12px",
+        color: "#fff",
       }}
     >
       {/* TOP SECTION */}
-      <div>
+      <div style={{ flex: 1, overflowY: "auto" }}>
         <h2 style={{ marginBottom: "15px", fontWeight: "600" }}>
           🤖 AI Assistant
         </h2>
@@ -74,13 +72,14 @@ function Chat() {
           style={{
             padding: "8px 14px",
             marginBottom: "12px",
-            background: "#343a40",
+            background: "linear-gradient(90deg, #6366f1, #4f46e5)", // ✅ updated
             color: "#fff",
             border: "none",
             borderRadius: "8px",
             cursor: "pointer",
             fontSize: "13px",
             fontWeight: "500",
+            width: "100%",
           }}
         >
           Sample Chats ▾
@@ -90,14 +89,16 @@ function Chat() {
         {showSamples && (
           <div
             style={{
-              background: "#ffffff",
+              background: "rgba(255,255,255,0.1)",
+              color: "#fff",
               padding: "12px",
               borderRadius: "10px",
-              border: "1px solid #e0e0e0",
+              border: "1px solid rgba(255,255,255,0.1)",
               marginBottom: "12px",
               maxHeight: "220px",
               overflowY: "auto",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+              backdropFilter: "blur(10px)",
             }}
           >
             {sampleChats.map((chat, index) => (
@@ -110,10 +111,12 @@ function Chat() {
                   padding: "8px",
                   borderRadius: "6px",
                   marginBottom: "6px",
-                  background: "#f8f9fa",
+                  background: "rgba(255,255,255,0.08)",
                 }}
               >
-                <span style={{ flex: 1, fontSize: "13px" }}>{chat}</span>
+                <span style={{ flex: 1, fontSize: "13px", color: "#fff" }}>
+                  {chat}
+                </span>
 
                 <button
                   onClick={() => handleCopy(chat)}
@@ -124,7 +127,8 @@ function Chat() {
                     cursor: "pointer",
                     borderRadius: "6px",
                     border: "none",
-                    background: "#dee2e6",
+                    background: "rgba(255,255,255,0.2)",
+                    color: "#fff",
                   }}
                 >
                   📋
@@ -137,13 +141,15 @@ function Chat() {
         {/* INFO BOX */}
         <div
           style={{
-            background: "#ffffff",
+            background: "rgba(255,255,255,0.1)", //
+            color: "#fff",
             padding: "12px",
             borderRadius: "10px",
             fontSize: "13px",
             marginBottom: "10px",
-            border: "1px solid #e0e0e0",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+            border: "1px solid rgba(255,255,255,0.1)", //
+            boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+            backdropFilter: "blur(10px)",
           }}
         >
           <b>Log interaction via chat</b>
@@ -163,9 +169,11 @@ function Chat() {
             height: "90px",
             padding: "12px",
             borderRadius: "10px",
-            border: "1px solid #ccc",
+            border: "1px solid rgba(255,255,255,0.2)", //
             fontSize: "14px",
             outline: "none",
+            background: "rgba(255,255,255,0.1)", //
+            color: "#fff",
           }}
         />
 
@@ -175,7 +183,7 @@ function Chat() {
             width: "100%",
             marginTop: "12px",
             padding: "12px",
-            background: "linear-gradient(90deg, #007bff, #0056b3)",
+            background: "linear-gradient(90deg, #6366f1, #4f46e5)", //
             color: "white",
             border: "none",
             borderRadius: "10px",
