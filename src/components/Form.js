@@ -19,6 +19,7 @@ function Form() {
     border: "1px solid #ccc",
     fontSize: "14px",
     outline: "none",
+    boxSizing: "border-box"
   };
 
   const labelStyle = {
