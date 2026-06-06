@@ -1,4 +1,8 @@
-🎨 AI CRM Frontend (React + Redux)
+# AI CRM Frontend (React + Redux)
+
+### 👨‍💻 Developed By
+
+**Udit U Gunagi**
 
 📌 Overview
 
@@ -156,3 +160,8 @@ src/
 - Add authentication
 
 ---
+
+## 👨‍💻 Author
+
+Developed by **Udit U Gunagi**
+
