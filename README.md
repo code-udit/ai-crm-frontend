@@ -7,6 +7,19 @@ It provides a clean UI where users can log, edit, and manage healthcare interact
 
 ---
 
+## 🔗 Links
+
+### 🌐 Live Demo
+https://ai-crm-frontend-gamma.vercel.app/
+
+### 💻 Frontend Repository
+https://github.com/code-udit/ai-crm-frontend.git
+
+### ⚙️ Backend Repository
+https://github.com/code-udit/ai-crm-backend.git
+
+---
+
 🚀 Features
 
 - ✅ Chat-based AI interaction input
