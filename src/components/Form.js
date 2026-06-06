@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { setInteraction } from "../redux/interactionSlice";
@@ -10,18 +10,19 @@ function Form() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL;
+  const [showWakeupMessage, setShowWakeupMessage] = useState(false);
 
   const inputStyle = {
-  width: "100%",
-  padding: "12px",
-  marginBottom: "14px",
-  borderRadius: "10px",
-  border: "1px solid #ddd",
-  fontSize: "14px",
-  outline: "none",
-  boxSizing: "border-box",
-  background: "#f9fafb",
-};
+    width: "100%",
+    padding: "12px",
+    marginBottom: "14px",
+    borderRadius: "10px",
+    border: "1px solid #ddd",
+    fontSize: "14px",
+    outline: "none",
+    boxSizing: "border-box",
+    background: "#f9fafb",
+  };
 
   const labelStyle = {
     fontWeight: "600",
@@ -36,13 +37,25 @@ function Form() {
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
-    console.log("SUBMIT CALLED");
+
+    let timer;
 
     try {
+      timer = setTimeout(() => {
+        setShowWakeupMessage(true);
+      }, 5000);
+
       const res = await axios.post(`${API_URL}/interactions`, data);
+
+      if (timer) clearTimeout(timer);
+      setShowWakeupMessage(false);
+
       toast.success("Saved successfully! ID: " + res.data.id);
       dispatch(setInteraction({}));
     } catch (err) {
+      if (timer) clearTimeout(timer);
+      setShowWakeupMessage(false);
+
       console.error(err);
       toast.error("Save failed");
     }
@@ -184,6 +197,29 @@ function Form() {
           >
             🚀 Submit
           </button>
+          {showWakeupMessage && (
+            <div
+              style={{
+                marginTop: "12px",
+                padding: "12px",
+                borderRadius: "10px",
+                background: "#fffbeb",
+                border: "1px solid #fcd34d",
+                color: "#92400e",
+              }}
+            >
+              <div style={{ fontWeight: "600" }}>Connecting to server...</div>
+
+              <div style={{ marginTop: "4px", fontSize: "14px" }}>
+                The backend is waking up after inactivity. This usually takes
+                10–20 seconds.
+              </div>
+
+              <div style={{ marginTop: "4px", fontSize: "14px" }}>
+                Thanks for your patience.
+              </div>
+            </div>
+          )}
 
           <button
             onClick={handleClear}

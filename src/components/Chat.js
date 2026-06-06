@@ -9,6 +9,7 @@ function Chat() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.interaction.data) || {};
   const API_URL = process.env.REACT_APP_API_URL;
+  const [showWakeupMessage, setShowWakeupMessage] = useState(false);
 
   const sampleChats = [
     "Met Dr Sharma yesterday, discussed diabetes drug, he was interested",
@@ -26,13 +27,22 @@ function Chat() {
   const handleSend = async () => {
     if (!message) return;
 
+    let timer;
+
     try {
+      timer = setTimeout(() => {
+        setShowWakeupMessage(true);
+      }, 5000);
+
       const url = `${API_URL}/ai/agent`;
 
       const res = await axios.post(url, {
-        message: message,
-        data: data,
+        message,
+        data,
       });
+
+      if (timer) clearTimeout(timer);
+      setShowWakeupMessage(false);
 
       const newData = res.data.data || res.data;
 
@@ -44,6 +54,9 @@ function Chat() {
 
       setMessage("");
     } catch (err) {
+      if (timer) clearTimeout(timer);
+      setShowWakeupMessage(false);
+
       console.error("Error:", err);
       alert("Backend error");
     }
@@ -192,8 +205,30 @@ function Chat() {
             fontSize: "15px",
           }}
         >
-          🚀 Log Interaction
+          Log Interaction
         </button>
+        {showWakeupMessage && (
+          <div
+            style={{
+              marginTop: "12px",
+              padding: "12px",
+              borderRadius: "10px",
+              background: "#fffbeb",
+              border: "1px solid #fcd34d",
+              color: "#92400e",
+              fontSize: "14px",
+            }}
+          >
+            <div style={{ fontWeight: "600" }}>Connecting to server...</div>
+
+            <div style={{ marginTop: "4px" }}>
+              The backend is waking up after inactivity. This usually takes
+              10–20 seconds.
+            </div>
+
+            <div style={{ marginTop: "4px" }}>Thanks for your patience.</div>
+          </div>
+        )}
       </div>
     </div>
   );
